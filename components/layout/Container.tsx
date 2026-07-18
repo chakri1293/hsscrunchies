@@ -1,10 +1,23 @@
-type ContainerProps = {
+type Props = {
   children: React.ReactNode;
+  className?: string;
 };
 
-export default function Container({ children }: ContainerProps) {
+export default function Container({
+  children,
+  className = "",
+}: Props) {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div
+      className={className}
+      style={{
+        maxWidth: "1320px",
+        margin: "0 auto",
+        paddingLeft: "24px",
+        paddingRight: "24px",
+        width: "100%",
+      }}
+    >
       {children}
     </div>
   );

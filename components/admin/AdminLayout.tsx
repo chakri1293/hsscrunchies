@@ -13,8 +13,10 @@ export default function AdminLayout({
       <div className="flex-1">
         <AdminHeader />
 
-        <main className="p-8">
-          {children}
+        <main className="flex-1 bg-gray-50">
+            <div className="mx-auto max-w-7xl p-8">
+                {children}
+            </div>
         </main>
       </div>
     </div>

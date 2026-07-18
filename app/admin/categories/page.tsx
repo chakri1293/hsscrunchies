@@ -1,5 +1,5 @@
 import { getCategories } from "@/services/category.service";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";    
 import PageHeader from "@/components/ui/page-header";
 import Link from "next/link";
 

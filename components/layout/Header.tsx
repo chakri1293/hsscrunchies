@@ -6,14 +6,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b">
       <Container>
-        <div className="flex h-20 items-center justify-between gap-6">
+        <div className="grid h-20 grid-cols-[220px_1fr_320px_120px] items-center gap-6">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-pink-500">
             HS Scrunchies
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-6 font-medium">
+          <nav className="hidden justify-center md:flex items-center gap-8 font-medium">
             <Link href="/">Home</Link>
             <Link href="/shop">Shop</Link>
             <Link href="/categories">Categories</Link>
@@ -22,7 +22,7 @@ export default function Header() {
           </nav>
 
           {/* Search */}
-          <div className="hidden lg:flex items-center border rounded-full px-3 py-2 w-72">
+          <div className="hidden lg:flex items-center rounded-full border px-4 py-2">
             <Search size={18} />
             <input
               type="text"
@@ -32,7 +32,7 @@ export default function Header() {
           </div>
 
           {/* Icons */}
-          <div className="flex items-center gap-4">
+          <div className="flex justify-end items-center gap-5">
             <Heart size={22} className="cursor-pointer" />
             <User size={22} className="cursor-pointer" />
             <ShoppingCart size={22} className="cursor-pointer" />
