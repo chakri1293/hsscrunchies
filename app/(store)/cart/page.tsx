@@ -1,114 +1,114 @@
-"use client";
+    "use client";
 
-import Image from "next/image";
-import { useCart } from "@/components/providers/CartProvider";
+    import Image from "next/image";
+    import { useCart } from "@/components/providers/CartProvider";
 
-export default function CartPage() {
+    export default function CartPage() {
 
-const {
-  cart,
-  totalPrice,
-  totalItems,
-  increase,
-  decrease,
-  remove,
-} = useCart();
+    const {
+    cart,
+    totalPrice,
+    totalItems,
+    increase,
+    decrease,
+    remove,
+    } = useCart();
 
-return (
+    return (
 
-<div className="mx-auto max-w-6xl p-8">
+    <div className="mx-auto max-w-6xl p-8">
 
-<h1 className="mb-8 text-3xl font-bold">
-Shopping Cart
-</h1>
+    <h1 className="mb-8 text-3xl font-bold">
+    Shopping Cart
+    </h1>
 
-{
-cart.length===0?
+    {
+    cart.length===0?
 
-<p>Your cart is empty.</p>
+    <p>Your cart is empty.</p>
 
-:
+    :
 
-<div className="space-y-6">
+    <div className="space-y-6">
 
-{
-cart.map(item=>(
+    {
+    cart.map(item=>(
 
-<div
-key={item.productId}
-className="flex items-center gap-4 rounded-lg border p-4"
->
+    <div
+    key={item.productId}
+    className="flex items-center gap-4 rounded-lg border p-4"
+    >
 
-<Image
-src={item.image}
-alt={item.name}
-width={80}
-height={80}
-/>
+    <Image
+    src={item.image}
+    alt={item.name}
+    width={80}
+    height={80}
+    />
 
-<div className="flex-1">
+    <div className="flex-1">
 
-<h3>
-{item.name}
-</h3>
+    <h3>
+    {item.name}
+    </h3>
 
-<p>
-₹{item.price}
-</p>
+    <p>
+    ₹{item.price}
+    </p>
 
-</div>
+    </div>
 
-<div className="flex gap-2">
+    <div className="flex gap-2">
 
-<button
-onClick={()=>decrease(item.productId)}
->
--
-</button>
+    <button
+    onClick={()=>decrease(item.productId)}
+    >
+    -
+    </button>
 
-<span>
-{item.quantity}
-</span>
+    <span>
+    {item.quantity}
+    </span>
 
-<button
-onClick={()=>increase(item.productId)}
->
-+
-</button>
+    <button
+    onClick={()=>increase(item.productId)}
+    >
+    +
+    </button>
 
-</div>
+    </div>
 
-<button
-onClick={()=>removeFromCart(item.productId)}
->
-❌
-</button>
+    <button
+    onClick={()=>remove(item.productId)}
+    >
+    ❌
+    </button>
 
-</div>
+    </div>
 
-))
-}
+    ))
+    }
 
-<div className="text-right text-2xl font-bold">
+    <div className="text-right text-2xl font-bold">
 
-Total : ₹{totalPrice}
+    Total : ₹{totalPrice}
 
-</div>
+    </div>
 
-<button
-className="rounded-lg bg-pink-600 px-6 py-3 text-white"
->
+    <button
+    className="rounded-lg bg-pink-600 px-6 py-3 text-white"
+    >
 
-Proceed to Checkout
+    Proceed to Checkout
 
-</button>
+    </button>
 
-</div>
+    </div>
 
-}
+    }
 
-</div>
+    </div>
 
-);
+    );
 
-}
+    }
