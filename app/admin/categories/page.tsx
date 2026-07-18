@@ -1,4 +1,6 @@
 import { getCategories } from "@/services/category.service";
+import Button from "@/components/ui/button";
+import PageHeader from "@/components/ui/page-header";
 import Link from "next/link";
 
 export default async function CategoriesPage() {
@@ -6,19 +8,15 @@ export default async function CategoriesPage() {
 
   return (
     <>
-    
-      <div className="mb-6 flex justify-between">
-        <h2 className="text-3xl font-bold">
-            Categories
-        </h2>
 
-        <Link
-            href="/admin/categories/new"
-            className="rounded bg-pink-500 px-5 py-2 text-white"
-        >
-            + Add Category
-        </Link>
-    </div>
+      <PageHeader
+        title="Categories"
+        action={
+            <Link href="/admin/categories/new">
+            <Button>+ Add Category</Button>
+            </Link>
+        }
+        />
 
       <table className="w-full border">
         <thead>
@@ -26,19 +24,34 @@ export default async function CategoriesPage() {
             <th className="border p-3">Name</th>
             <th className="border p-3">Slug</th>
             <th className="border p-3">Status</th>
+            <th className="border p-3">Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          {categories.map((c) => (
-            <tr key={c.id}>
-              <td className="border p-3">{c.name}</td>
-              <td className="border p-3">{c.slug}</td>
-              <td className="border p-3">
-                {c.isActive ? "Active" : "Inactive"}
-              </td>
-            </tr>
-          ))}
+            {categories.map((category) => (
+                <tr key={category.id}>
+                <td className="border p-3">{category.name}</td>
+                <td className="border p-3">{category.slug}</td>
+                <td className="border p-3">
+                    {category.isActive ? "Active" : "Inactive"}
+                </td>
+                <td className="border p-3">
+                    <div className="flex gap-2">
+                    <Link
+                        href={`/admin/categories/${category.id}/edit`}
+                        className="rounded bg-blue-500 px-3 py-1 text-white"
+                    >
+                        Edit
+                    </Link>
+
+                    <button className="rounded bg-red-500 px-3 py-1 text-white">
+                        Delete
+                    </button>
+                    </div>
+                </td>
+                </tr>
+            ))}
         </tbody>
       </table>
     </>

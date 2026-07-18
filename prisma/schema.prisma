@@ -17,6 +17,7 @@ model Category {
   displayOrder  Int           @default(0)
 
   subCategories SubCategory[]
+  products      Product[]
 
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
@@ -34,6 +35,54 @@ model SubCategory {
   categoryId    String
   category      Category    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
+  products      Product[]
+
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
+}
+
+model Product {
+  id             String       @id @default(cuid())
+
+  name           String
+  slug           String       @unique
+
+  description    String?
+
+  price          Decimal      @db.Decimal(10,2)
+  salePrice      Decimal?     @db.Decimal(10,2)
+
+  stock          Int          @default(0)
+
+  sku            String?      @unique
+
+  isFeatured     Boolean      @default(false)
+  isBestSeller   Boolean      @default(false)
+  isNewArrival   Boolean      @default(false)
+
+  isActive       Boolean      @default(true)
+
+  categoryId     String
+  category       Category     @relation(fields: [categoryId], references: [id])
+
+  subCategoryId  String?
+  subCategory    SubCategory? @relation(fields: [subCategoryId], references: [id])
+
+  images         ProductImage[]
+
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model ProductImage {
+  id          String    @id @default(cuid())
+
+  imageUrl    String
+
+  displayOrder Int      @default(0)
+
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime  @default(now())
 }
