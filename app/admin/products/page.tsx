@@ -79,15 +79,8 @@ className="border"
 </td>
 
 
-<td>
-{product.subCategory.category.name}
-</td>
-
-
-<td>
-{product.subCategory.name}
-</td>
-
+<td>{product.subCategory?.category?.name ?? "-"}</td>
+<td>{product.subCategory?.name ?? "-"}</td>
 
 <td>
 ₹{product.price.toString()}
