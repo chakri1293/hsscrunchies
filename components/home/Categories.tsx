@@ -26,7 +26,7 @@ export default async function Categories() {
             {categories.map((category) => (
               <Link
                 key={category.id}
-                href={`/category/${category.slug}`}
+                href={`/shop?category=${category.slug}`}
                 className="rounded-2xl border bg-white p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="mb-4 h-32 overflow-hidden rounded-xl bg-pink-100">

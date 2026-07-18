@@ -69,7 +69,7 @@ category.subCategories.map(
 
 key={sub.id}
 
-href={`/categories/${category.slug}/${sub.slug}`}
+href={`/shop/${category.slug}/${sub.slug}`}
 
 className="
 border

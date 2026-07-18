@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Poppins } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/components/providers/CartProvider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -28,7 +29,11 @@ export default function RootLayout({
       lang="en"
       className={`${geist.variable} ${poppins.variable}`}
     >
-      <body>{children}</body>
+      <body>
+      <CartProvider>
+        {children}
+      </CartProvider>
+    </body>
     </html>
   );
 }
